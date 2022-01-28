@@ -1,0 +1,126 @@
+<!--
+# Copyright 2021, Michele Polese <michele.polese@gmail.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 3 as
+# published by the Free Software Foundation;
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!--
+    Modified from the Debian original for Ubuntu
+    Last updated: 2016-11-16
+    See: https://launchpad.net/bugs/1288690
+  -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Sat flyovers</title>
+    <style>
+        html, body, #wrapper {
+           height:100%;
+           width: 100%;
+           margin: 0;
+           padding: 0;
+           border: 0;
+           font-size: 15pt;
+           font-family: helvetica;
+
+        }
+        #wrapper td {
+           vertical-align: center;
+           text-align: center;
+        }
+
+        /* Set the size of the div element that contains the map */
+        #map {
+          height: 900px;  /* The height is 600 pixels */
+          width: 100%;  /* The width is the width of the web page */
+        }
+    </style>
+  </head>
+  <script type="text/javascript" src="lat-lng.js"></script> 
+  <body>
+    <center>
+
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+    // Initialize and add the map
+    function initMap() {
+      var lineSymbol = {
+        path: 'M 0,-1 0,1',
+        strokeOpacity: 0.5,
+        scale: 3
+      };
+      // The center
+      // 6.374706, -149.271947
+      var center = {lat: 42.33806222070769, lng: -71.08875614373473};
+      // The map, centered 
+      var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 3, center: center});
+
+      var i;
+      for (i = 0; i < pass_index; i++) {
+        var flightPlanCoordinatesName = "flightPlanCoordinates_" + i
+        console.log(flightPlanCoordinatesName)
+        const flightPath = new google.maps.Polyline({
+          path: eval(flightPlanCoordinatesName),
+          geodesic: true,
+          strokeColor: "#FF0000",
+          strokeOpacity: 0.5,
+          strokeWeight: 2,
+        });
+
+        flightPath.setMap(map);
+
+        var flightPlanCoordinatesNameAbove = "flightPlanCoordinatesAbove_" + i
+        console.log(flightPlanCoordinatesNameAbove)
+        const flightPathAbove = new google.maps.Polyline({
+          path: eval(flightPlanCoordinatesNameAbove),
+          geodesic: true,
+          // strokeColor: "#FF0000",
+          // strokeOpacity: 1.0,
+          // strokeWeight: 2,
+          strokeOpacity: 0,
+          icons: [{
+            icon: lineSymbol,
+            offset: '0',
+            repeat: '20px'
+          }],
+        });
+
+        flightPathAbove.setMap(map);
+      }
+
+      // new google.maps.Marker({
+      //   position: center,
+      //   map: map,
+      //   title: "Experiment location",
+      // });
+    }
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=TODO-ADD-YOUR-KEY&callback=initMap">
+    </script>
+
+    </center>
+    </td>
+  </body>
+</html>
+  </body>
+</html>
