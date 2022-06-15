@@ -2,9 +2,9 @@
 
 The code in this repository has been used to generate, elaborate, and plot the data for the paper 
 
-> M. Polese, V. Ariyarathna, P. Sen, J. Siles, F. Restuccia, T. Melodia and J. M. Jornet, "Dynamic Spectrum Sharing Between Active and Passive Users Above 100 GHz", submitted, 2021.
+> M. Polese, V. Ariyarathna, P. Sen, J. Siles, F. Restuccia, T. Melodia and J. M. Jornet, "Dynamic spectrum sharing between active and passive users above 100 GHz", Commun Eng 1, 6, Nature (2022) https://doi.org/10.1038/s44172-022-00002-x
 
-Please reference the paper if you use the code or data from the dataset. The data can be found at [this link](http://hdl.handle.net/2047/D20427338).
+Please reference the paper [bibtex](https://ece.northeastern.edu/wineslab/wines_bibtex/polese2022dynamic.txt) if you use the code or data from the dataset. The data can be found at [this link](http://hdl.handle.net/2047/D20427338).
 
 <!-- Please reference the paper if you use the code or data from the dataset: [bibtex entry](https://ece.northeastern.edu/wineslab/wines_bibtex/polese2021mobihoc.txt)
  -->
